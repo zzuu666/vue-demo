@@ -11,6 +11,17 @@ let getInTheaterMovies = (cb) => {
   })
 }
 
+let getMovieDetail = (id, cb) => {
+  jsonp(`${DOUBAN_HOST}/v2/movie/subject/${id}`, null, (err, data) => {
+    if (err) {
+      console.log(err)
+    } else {
+      cb(data)
+    }
+  })
+}
+
 export default {
-  getInTheaterMovies
+  getInTheaterMovies,
+  getMovieDetail
 }
