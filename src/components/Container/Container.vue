@@ -3,7 +3,7 @@
     <Item 
       v-for="(item, index) in movies" 
       :title="item.title" 
-      :img="item.images.medium"
+      :img="item.images.large"
       :directors="item.directors"
       :casts="item.casts"
       :genres="item.genres"

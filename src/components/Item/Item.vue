@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div class="image">
-      <img :src="img">
+      <img :src="jpgSrc">
     </div>
     <div class="title">
       {{title}}
@@ -33,6 +33,11 @@ export default {
     directors: Array,
     casts: Array,
     genres: Array
+  },
+  computed: {
+    jpgSrc () {
+      return this.img.replace('.webp', '.jpg')
+    }
   }
 }
 </script>
@@ -70,7 +75,7 @@ export default {
       padding: 2px;
       margin: 0 2px;
       color: #fff;
-      background: #4e4e4e;
+      background: #3cb981;
       font-size: 12px;
     }
   }

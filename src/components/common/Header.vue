@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <img src="../../assets/logo.png" class="logo">
+    <img src="../../assets/logo.png" class="logo" @click="gotoHome">
   </header>
 </template>
 
@@ -10,6 +10,11 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    gotoHome () {
+      this.$router.push('/')
     }
   }
 }
@@ -29,9 +34,9 @@ export default {
   z-index: 1;
   .logo {
     position: absolute;
-    top: 4px;
-    left: 12px;
-    height: 32px;
+    top: 8px;
+    left: 24px;
+    height: 24px;
   }
 }
 </style>
