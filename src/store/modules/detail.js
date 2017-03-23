@@ -10,8 +10,8 @@ const getters = {
 }
 
 const actions = {
-  getMovieDetail ({ commit }) {
-    api.getMovieDetail((data) => {
+  getMovieDetail ({ commit }, { id }) {
+    api.getMovieDetail(id, (data) => {
       commit('updateDetails', data)
     })
   }

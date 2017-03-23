@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <header class="header">
-      <span>正在热映</span><span>即将上映</span>
-    </header>
     <Item 
       v-for="(item, index) in movies" 
       :title="item.title" 
@@ -10,8 +7,8 @@
       :directors="item.directors"
       :casts="item.casts"
       :genres="item.genres"
-      :key="item.id" 
-      @click="showMovieDetail(item.id)"></Item>
+      :key="item.id"
+      @click.native="showMovieDetail($event, item.id)"></Item>
   </div>
 </template>
 
@@ -32,8 +29,16 @@ export default {
     })
   },
   methods: {
-    showMovieDetail (id) {
-      console.log(this.router)
+    test () {
+      console.log('test')
+    },
+    showMovieDetail (e, id) {
+      this.$router.push({
+        name: 'Detail',
+        params: {
+          id: id
+        }
+      })
       // router.push({ name: 'detail', params: { userId: 123 }})
     }
   },
@@ -47,27 +52,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less">
-.container {
-    position: relative;
-    padding: 40px 0 0 0;
-}
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 40px;
-  line-height: 40px;
-  width: 100%;
-  border-bottom: 1px solid #dfdfdf;
-  background: #fff;
-  z-index: 1;
-  span {
-    position: relative;
-    display: inline-block;
-    width: 50%;
-    text-align: center;
-  }
-}
+<style lang="less" scoped>
 </style>
 

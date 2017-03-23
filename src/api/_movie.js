@@ -9,6 +9,7 @@ let getInTheaterMovies = (cb) => {
 
 let getMovieDetail = (id, cb) => {
   let data = mock.details
+  console.log(`正在获取${id}...`)
   setTimeout(() => {
     cb(data)
   }, 1000)

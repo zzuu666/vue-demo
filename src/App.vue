@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <v-header />
+    <router-view class="view"></router-view>
   </div>
 </template>
 
 <script>
+import VHeader from './components/common/Header'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    VHeader
+  }
 }
 </script>
 
@@ -20,5 +26,9 @@ body {
 }
 div {
   box-sizing: border-box;
+}
+.view {
+  position: relative;
+  padding: 40px 0 0 0;
 }
 </style>
