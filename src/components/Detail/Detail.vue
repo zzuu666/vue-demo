@@ -116,12 +116,14 @@ export default {
     }
   }
   .content {
-    text-indent: 2rem;
+    text-indent: 28px;
+    color: #777;
+    font-size: 14px;
     .image {
       position: relative;
       float: right;
       height: 120px;
-      margin: 0 0 0 16px;
+      margin: 0 0 14px 14px;
     }
   }
   .casts {

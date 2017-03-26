@@ -6,7 +6,10 @@
       :img="item.images.large"
       :directors="item.directors"
       :casts="item.casts"
-      :genres="item.genres"
+      :rating="item.rating"
+      :star-movie="starMovie"
+      :cancel-movie="cancelMovie"
+      :id="item.id"
       :key="item.id"
       @click.native="showMovieDetail($event, item.id)"></Item>
   </div>
@@ -40,6 +43,17 @@ export default {
         }
       })
       // router.push({ name: 'detail', params: { userId: 123 }})
+    },
+    starMovie (id, title) {
+      this.$store.dispatch('increaseStar', {
+        id,
+        title
+      })
+    },
+    cancelMovie (id) {
+      this.$store.dispatch('decreaseStar', {
+        id
+      })
     }
   },
   components: {

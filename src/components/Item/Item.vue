@@ -5,11 +5,9 @@
     </div>
     <div class="title">
       {{title}}
-      <span v-for="(item, index) in genres">
-        {{item}}
-      </span>
     </div>
-    <div class="directors">
+    <div class="rating" v-text="rating.average"></div>
+    <div class="casts">
       <span>导演:</span>
       <span v-for="(item, index) in directors">{{item.name}}</span>
     </div>
@@ -17,10 +15,20 @@
       <span>演员:</span>
       <span v-for="(item, index) in casts">{{item.name}}</span>
     </div>
+    <div 
+      class="bottom" 
+      :class="[
+        isStar ? 'stared' : ''
+      ]" 
+      @click.stop="updateStar(id, title)">
+      {{ isStar ? '取消收藏' : '收藏' }}
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'item',
   data () {
@@ -28,15 +36,38 @@ export default {
     }
   },
   props: {
+    id: String,
     title: String,
     img: String,
     directors: Array,
     casts: Array,
-    genres: Array
+    rating: Object,
+    starMovie: Function,
+    cancelMovie: Function
+  },
+  methods: {
+    updateStar (id, title) {
+      if (this.isStar) {
+        this.cancelMovie(id)
+      } else {
+        this.starMovie(id, title)
+      }
+    }
   },
   computed: {
     jpgSrc () {
       return this.img.replace('.webp', '.jpg')
+    },
+    ...mapGetters({
+      stars: 'getStars'
+    }),
+    isStar () {
+      for (let i = 0, len = this.stars.length; i < len; i++) {
+        if (this.stars[i].id === this.id) {
+          return true
+        }
+      }
+      return false
     }
   }
 }
@@ -65,6 +96,15 @@ export default {
       transform: translateX(-50%);
     }
   }
+  .rating {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-weight: 100;
+    font-size: 20px;
+    color: orange;
+    padding: 0 6px;
+  }
   .title {
     position: relative;
     padding: 10px 0;
@@ -85,6 +125,20 @@ export default {
     color: #4e4e4e;
     span {
       margin-right: 4px;
+    }
+  }
+  .bottom {
+    position: absolute;
+    bottom: 10px;
+    right: 16px;
+    background: #3cb981;
+    color: #fff;
+    padding: 2px 12px;
+    border-radius: 2px;
+    font-size: 14px;
+    &.stared {
+      background: #dfdfdf;
+      color: #777;
     }
   }
 }

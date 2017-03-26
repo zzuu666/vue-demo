@@ -18,7 +18,7 @@ export default {
       this.$router.push('/')
     },
     gotoStars () {
-      this.$router.push('/stars')
+      this.$router.push('/star')
     }
   }
 }

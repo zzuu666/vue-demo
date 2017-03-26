@@ -4,6 +4,7 @@ import * as actions from './actions'
 import * as getters from './getters'
 import movie from './modules/movie'
 import detail from './modules/detail'
+import star from './modules/star'
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   getters,
   modules: {
     movie,
-    detail
+    detail,
+    star
   },
   strict: debug
 })

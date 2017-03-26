@@ -1,4 +1,4 @@
-import api from '../../api/_movie'
+import api from '../../api/movie'
 
 const state = {
   movies: [],
