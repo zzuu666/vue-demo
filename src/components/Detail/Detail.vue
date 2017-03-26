@@ -5,10 +5,10 @@
         <span class="title-ch" v-text="details.title"></span>
         <span class="year" v-text="details.year"></span>
       </div>
-      <p class="title-en" v-if="originalTitle" v-text="originalTitle"></p>
+      <p class="title-en" v-text="originalTitle"></p>
     </div>
     <div class="key-info">
-      <p class="key-info-rating">{{details.rating.average}}</p>
+      <p class="key-info-rating">{{details.rating && details.rating.average}}</p>
       <p class="key-info-counts">{{details.ratings_count}} 人</p>
     </div>
     <div class="content">
@@ -55,7 +55,7 @@ export default {
       return this.details.title === this.details.original_title ? '' : this.details.original_title
     },
     jpgSrc () {
-      return this.details.images.large.replace('.webp', '.jpg')
+      return this.details.images && this.details.images.large.replace('.webp', '.jpg')
     }
   },
   components: {
@@ -91,6 +91,7 @@ export default {
       color: #7e7e7e;
       font-weight: 100;
       margin: 4px 0;
+      height: 25px;
     }
   }
   .key-info {

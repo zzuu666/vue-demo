@@ -1,6 +1,7 @@
 <template>
   <header class="header">
     <img src="../../assets/logo.png" class="logo" @click="gotoHome">
+    <span class="right" @click="gotoStars">我收藏的</span>
   </header>
 </template>
 
@@ -15,6 +16,9 @@ export default {
   methods: {
     gotoHome () {
       this.$router.push('/')
+    },
+    gotoStars () {
+      this.$router.push('/stars')
     }
   }
 }
@@ -37,6 +41,15 @@ export default {
     top: 8px;
     left: 24px;
     height: 24px;
+  }
+  .right {
+    position: absolute;
+    display: inline-block;
+    right: 16px;
+    top: 0;
+    height: 40px;
+    font-weight: 900;
+    color: #3cb981;
   }
 }
 </style>
