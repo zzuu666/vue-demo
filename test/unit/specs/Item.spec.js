@@ -1,19 +1,33 @@
 import Vue from 'vue'
-import MyComponent from '@/components/Test'
+import Item from '@/components/Item'
 
-// helper function that mounts and returns the rendered text
-function getRenderedText (Component, propsData) {
-  const Ctor = Vue.extend(Component)
-  const vm = new Ctor({ propsData }).$mount()
-  return vm.$el.textContent
-}
-describe('MyComponent', () => {
-  it('renders correctly with different props', () => {
-    expect(getRenderedText(MyComponent, {
-      msg: 'Hello'
-    })).toBe('Hello')
-    expect(getRenderedText(MyComponent, {
-      msg: 'Bye'
-    })).toBe('Bye')
+describe('Item.vue', () => {
+  it('It should render with different props', () => {
+    // let component = Vue.extend(Item)
+    // let vm = new component({
+    //   propsData: {
+    //     title: 'hello'
+    //   }
+    // }).$mount()
+    let vm = new Vue({
+      template: `
+      <div>
+        <Item :title="title"></Item>
+      </div>
+      `,
+      components: {
+        Item
+      },
+      data () {
+        return {
+          title: 'Hello'
+        }
+      }
+    })
+    Vue.nextTick(() => {
+      expect(vm.$el.querySelector('.title').textContent).toBe('Hello')
+    })
+    // expect(vm.$el.querySelector('.title').textContent).toBe('Hello')
   })
 })
+
