@@ -31,10 +31,6 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'item',
-  data () {
-    return {
-    }
-  },
   props: {
     id: String,
     title: String,

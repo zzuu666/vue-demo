@@ -15,6 +15,7 @@ describe('Test Intro Module with different props', () => {
       alt: 'Tim-alt'
     }
     let vm = getRenderedText(Intro, props)
+    console.log(vm)
     expect(vm.querySelector('.name').textContent).to.equal('Tim')
   })
 })
