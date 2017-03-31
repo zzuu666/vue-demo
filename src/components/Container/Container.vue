@@ -6,7 +6,7 @@
       :img="item.images.large"
       :directors="item.directors"
       :casts="item.casts"
-      :rating="item.rating"
+      :rating="item.rating.average"
       :star-movie="starMovie"
       :cancel-movie="cancelMovie"
       :id="item.id"

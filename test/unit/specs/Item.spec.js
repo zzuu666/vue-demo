@@ -6,7 +6,7 @@ import Item from '@/components/Item'
 Vue.use(Vuex)
 
 describe('Item.vue', () => {
-  it('Test component with vuex', (done) => {
+  it('Test component with vuex', () => {
     const state = {
       stars: [
         {
@@ -22,19 +22,20 @@ describe('Item.vue', () => {
     })
     let propsData = {
       id: '100000',
-      title: 'Iron Man'
+      title: 'Iron Man',
+      img: 'https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2414358483.webp',
+      directors: [],
+      casts: [],
+      rating: 9.0,
+      starMovie: Function,
+      cancelMovie: Function
     }
     let Component = Vue.extend(Item)
     let vm = new Component({
       store,
       propsData
     }).$mount()
-    setTimeout(() => {
-      console.log(vm.$el)
-      done()
-    }, 0)
-    
-    // expect(vm.$el.querySelector('.title').textContent).to.equal('Iron Man')
+    expect(vm.$el.querySelector('.title').textContent).to.equal('Iron Man')
   })
 })
 

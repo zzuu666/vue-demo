@@ -3,10 +3,8 @@
     <div class="image">
       <img :src="jpgSrc">
     </div>
-    <div class="title">
-      {{title}}
-    </div>
-    <div class="rating" v-text="rating.average"></div>
+    <div class="title">{{title}}</div>
+    <div class="rating" v-text="rating"></div>
     <div class="casts">
       <span>导演:</span>
       <span v-for="(item, index) in directors">{{item.name}}</span>
@@ -37,7 +35,7 @@ export default {
     img: String,
     directors: Array,
     casts: Array,
-    rating: Object,
+    rating: Number,
     starMovie: Function,
     cancelMovie: Function
   },
